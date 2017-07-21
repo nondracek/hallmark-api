@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
 // Import index action from movies controller
-import { getData, tester } from './controllers/measures';
+import { getData, pins } from './controllers/measures';
 
 
 const bodyParser = require('body-parser');
@@ -17,7 +17,7 @@ const router = Router();
 router.route('/data')
   .get(getData);
 
-router.route('/')
-  .get(tester);
+router.route('/pins')
+  .get(pins);
 
 export default router;

@@ -1,7 +1,7 @@
 import moment from 'moment';
 var mssql = require('mssql');
 
-const config = {
+const config1 = {
   server: "Hpl-Dsql2\\HPLDsql2",
   user: "NOndracek",
   password: "Hallmark17",
@@ -10,9 +10,9 @@ const config = {
 
 
 
-export const sqlConnect = (callback) => {
+export const sqlConnectData = (callback) => {
 
-  var conn = new mssql.ConnectionPool(config);
+  var conn = new mssql.ConnectionPool(config1);
   var req = new mssql.Request(conn);
 
   conn.connect((err) => {
@@ -26,18 +26,38 @@ export const sqlConnect = (callback) => {
         console.log(err);
       }
       else {
-        console.log(result.recordset);
         callback(result.recordset);
       }
       conn.close()
     })
+  });
+}
 
-    // callback('hello')
-    // new mssql.Request().query('SELECT * FROM measureData', (err, result) => {
-    //   console.log(JSON.parse(JSON.stringify(result)));
-    //   callback(result)
+export const sqlConnectPins = (callback) => {
+
+  var conn = new mssql.ConnectionPool(config1);
+  var req = new mssql.Request(conn);
+
+  conn.connect((err) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    req.query('SELECT * FROM Users', (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        callback(result.recordset);
+      }
+      conn.close()
     })
-  };
+  });
+
+}
+
+
 
 
 
@@ -47,22 +67,20 @@ export const sqlConnect = (callback) => {
   //   callback(result)
   // });
 
-export const tester = (req, res, next) => {
-  res.sendStatus(200);
+export const pins = (req, res, next) => {
+  sqlConnectPins((data) => {
+    res.json({
+      userData: data
+    });
+  });
 }
 
 
 export const getData = (req, res, next) => {
 
-  // sqlConnect((data) => {
-  //       res.json({
-  //         measureTypes: data
-  //       })
-  // });
-
-  sqlConnect((data) => {
-        res.send(data)})
-
-
-
-};
+  sqlConnectData((data) => {
+        res.json({
+          measureTypes: data
+        });
+  });
+}
