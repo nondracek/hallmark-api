@@ -32,7 +32,7 @@ export const sqlConnect = (callback) => {
       conn.close()
     })
 
-    callback('hello')
+    // callback('hello')
     // new mssql.Request().query('SELECT * FROM measureData', (err, result) => {
     //   console.log(JSON.parse(JSON.stringify(result)));
     //   callback(result)

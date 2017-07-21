@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "npm install",
-    "start": "node_modules/nodemon/bin/nodemon.js -- node_modules/babel-cli/bin/babel-node.js index.js",
+    "start": "node_modules/nodemon/bin/nodemon.js -- node_modules/babel-cli/bin/babel-node.js hallmark-api.js",
     "dev": "mongod -f models/mongod.conf & node index.js",
     "mongo-kill": "killall mongod"
   },

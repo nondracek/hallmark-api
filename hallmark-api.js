@@ -9,6 +9,8 @@ const app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
+app.set('trust proxy', 'loopback, 10.120.100.55') 
+
 // Logger that outputs all requests into the console
 app.use(morgan('combined'));
 // Use router for all API endpoints
