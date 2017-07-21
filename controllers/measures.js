@@ -48,7 +48,6 @@ export const sqlConnect = (callback) => {
   // });
 
 export const tester = (req, res, next) => {
-  console.log("DID IT");
   res.sendStatus(200);
 }
 
@@ -61,12 +60,9 @@ export const getData = (req, res, next) => {
   //       })
   // });
 
-  // sqlConnect((data) => {
-  //       res.send(data)})
+  sqlConnect((data) => {
+        res.send(data)})
 
-  console.log('hello')
 
-  res.send("data gotten");
-  // res.sendStatus(200);
 
 };
