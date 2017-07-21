@@ -12,11 +12,11 @@ app.set('port', (process.env.PORT || 5000));
 // Logger that outputs all requests into the console
 app.use(morgan('combined'));
 // Use router for all API endpoints
-// app.use('/', router);
+app.use('/', router);
 
-app.get('/', function(request, response) {
-  response.send(cool());
-});
+// app.get('/', function(request, response) {
+//   response.send(cool());
+// });
 
 
 app.listen(app.get('port'), function() {
