@@ -48,14 +48,20 @@ export const sqlConnect = (callback) => {
   //   callback(result)
   // });
 
+export const tester = (req, res, next) => {
+  console.log("DID IT");
+  res.sendStatus(200);
+}
 
 
 export const getData = (req, res, next) => {
 
-  sqlConnect((data) => {
-        res.json({
-          measureTypes: data
-        })
-  });
+  // sqlConnect((data) => {
+  //       res.json({
+  //         measureTypes: data
+  //       })
+  // });
+
+  res.sendStatus(200);
 
 };

@@ -3,6 +3,7 @@ import express from 'express';
 import morgan from 'morgan';
 import router from './router';
 
+app.set('port', (process.env.PORT || 5000));
 
 // Initialize http server
 const app = express();
@@ -12,7 +13,6 @@ app.use(morgan('combined'));
 // Use router for all API endpoints
 app.use('/', router);
 
-const server = app.listen(3000, () => {
-  const { address, port } = server.address();
-  console.log(`Listening at http://${address}:${port}`);
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
