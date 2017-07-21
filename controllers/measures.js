@@ -15,8 +15,6 @@ export const sqlConnect = (callback) => {
   var conn = new mssql.ConnectionPool(config);
   var req = new mssql.Request(conn);
 
-  // mssql.close()
-
   conn.connect((err) => {
     if (err) {
       console.log(err);
@@ -34,6 +32,7 @@ export const sqlConnect = (callback) => {
       conn.close()
     })
 
+    callback('hello')
     // new mssql.Request().query('SELECT * FROM measureData', (err, result) => {
     //   console.log(JSON.parse(JSON.stringify(result)));
     //   callback(result)
@@ -62,6 +61,12 @@ export const getData = (req, res, next) => {
   //       })
   // });
 
-  res.sendStatus(200);
+  // sqlConnect((data) => {
+  //       res.send(data)})
+
+  console.log('hello')
+
+  res.send("data gotten");
+  // res.sendStatus(200);
 
 };
