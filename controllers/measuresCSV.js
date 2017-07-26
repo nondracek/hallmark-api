@@ -1,17 +1,17 @@
 const csv = require('csvtojson');
-const csv2 = require('csvjson');
+const request=require('request')
 const csvFile = './controllers/measuresData.csv';
 var fs = require('fs');
 
 
 
-export const test = (req, res, next) => {
+export const dataCSV = (req, res, next) => {
 
   let data = { CIS: {}, AIM: {}, HPL: {}, HSU: {}, ESP: {}, MPL: {}, HFL: {}, Casualty: {}, }
 
   csv()
-    .fromFile(csvFile)
-    .on('csv',(csvRow)=>{
+    .fromStream(request.get('http://secure-testing.hallmarkgrp.com/MobileMeasures.csv'))
+    .on('csv',(csvRow) => {
 
       switch (csvRow[0]) {
         case 'CIS':
@@ -39,10 +39,8 @@ export const test = (req, res, next) => {
     })
     .on('done',(error)=>{
         console.log(data)
+        res.json(data);
     })
 
-
-
-  res.sendStatus(200);
 
 }
