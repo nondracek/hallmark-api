@@ -1,6 +1,7 @@
 import express, { Router } from 'express';
 // Import index action from movies controller
 import { getData, pins } from './controllers/measures';
+import { test } from './controllers/measuresCSV';
 
 
 const bodyParser = require('body-parser');
@@ -15,7 +16,7 @@ const router = Router();
 
 // Handle /movies.json route with index action from movies controller
 router.route('/data')
-  .get(getData);
+  .get(test);
 
 router.route('/pins')
   .get(pins);
