@@ -10,6 +10,7 @@ export const dataCSV = (req, res, next) => {
   let data = { CIS: {}, AIM: {}, HPL: {}, HSU: {}, ESP: {}, MPL: {}, HFL: {}, Casualty: {}, }
 
   csv()
+    // The website where the csv file for the MTD and YTD data is taken from
     .fromStream(request.get('http://secure-testing.hallmarkgrp.com/MobileMeasures.csv'))
     .on('csv',(csvRow) => {
 
