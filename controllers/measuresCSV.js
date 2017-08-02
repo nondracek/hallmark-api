@@ -34,7 +34,7 @@ export const dataCSV = (req, res, next) => {
           data.MPL[csvRow[1]] = [csvRow[2], csvRow[3]];
           break;
         case 'Specialty Personal Lines':
-          data.HSU[csvRow[1]] = [csvRow[2], csvRow[3]];
+          data.HPL[csvRow[1]] = [csvRow[2], csvRow[3]];
           break;
       }
     })
